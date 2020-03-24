@@ -1,0 +1,4 @@
+---
+# handlers file for pi-initial
+- name: restart nginx
+  service: name=nginx state=restarted

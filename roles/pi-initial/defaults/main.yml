@@ -1,0 +1,5 @@
+---
+# defaults file for pi-initial
+created_by: "Scott Braconnier"
+Ansible_Project: "Nginx - Load Balancer - Kubernetes - Docker"
+appname: "Ranger"

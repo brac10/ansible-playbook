@@ -1,0 +1,60 @@
+---
+- name: "{{ Ansible_Project }} | Toggle LED Color"
+  shell: blinkstick --morph --set-color=RED
+ 
+- name: "{{ Ansible_Project }} | SSH into Server {{ inventory_hostname }} named {{ ansible_hostname }}"
+  delegate_to: localhost
+  wait_for:
+    host: "{{ inventory_hostname }}"
+    port: 22
+    state: started
+    timeout: 200
+ 
+- name: "{{ Ansible_Project }} | Collect Device Information"
+  raw: "df -h"
+  register: server_results
+ 
+- name: "{{ Ansible_Project }} | Toggle Orange Color"
+  shell: blinkstick --morph --set-color=ORANGE
+ 
+- name: "{{ Ansible_Project }} | Display Server Information"
+  debug:
+    var: server_results.stdout
+ 
+- name: "{{ Ansible_Project }} | Toggle LED Color"
+  shell: blinkstick --morph --set-color=GREEN
+ 
+- name: "{{ Ansible_Project }} | Installing Nginx"
+  become: yes
+  become_method: sudo
+  apt:
+    name: nginx
+    state: latest
+ 
+- name: Check if NginX Directory file exists
+  stat:
+    path: /etc/nginx/sites-enabled/default
+  register: nginx_rules
+ 
+
+- name: "{{ Ansible_Project }} | Create a directory"
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: directory
+    owner: root
+    group: sudo
+    mode: 0644
+    recurse: yes
+  when: nginx_rules.stat.exists != true
+ 
+- name: "{{ Ansible_Project }} | Going Pink"
+  shell: blinkstick --morph --set-color=PURPLE
+ 
+- name: "{{ Ansible_Project }} | Copy the NginX Configuration File"
+  template:
+    src:  default.conf
+    dest: /etc/nginx/sites-enabled/default
+  notify: restart nginx
+ 
+- name: "{{ Ansible_Project }} | Going GREEN"
+  shell: blinkstick --morph --set-color=GREEN

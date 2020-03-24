@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+
+- hosts: launched
+  connection: ssh
+  gather_facts: yes
+
+  roles:
+    - pi-initial

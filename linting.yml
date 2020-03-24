@@ -1,0 +1,26 @@
+---
+- name: Cleaning Up Previous Results
+  shell: echo -n "" > results/linting-results.txt
+- name: Running Linting Tests
+  shell: |
+    roles/test.sh lint | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g" > results/linting.txt
+    cat results/linting.txt
+  register: results
+  changed_when: false
+  failed_when: false
+- name: Checking Results
+  shell: |
+    grep -B 1 'error' results/linting.txt >> results/linting-results.txt
+    grep -B 2 'Handler' results/linting.txt >> results/linting-results.txt
+    grep -A 1 '\[' results/linting.txt >> results/linting-results.txt
+    grep '.py' results/linting.txt >> results/linting-results.txt
+    rm results/linting.txt
+  changed_when: false
+  failed_when: false
+- name: Linting Results
+  fail:
+    msg: "Linting tests failed. You can find the linting results in results/linting-results.txt"
+  when: (results.stdout.find('error') != -1) or
+    (results.stdout.find('Handler') != -1) or
+    (results.stdout.find('.py') != -1) or
+    (results.stdout.find('[') != -1)
