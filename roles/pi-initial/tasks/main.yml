@@ -1,7 +1,10 @@
 ---
 - name: "{{ Ansible_Project }} | Toggle LED Color"
-  shell: blinkstick --morph --set-color=RED
- 
+  shell: blinkstick --morph --index 0 --set-color=RED
+
+- name: "{{ Ansible_Project }} | Toggle LED Color"
+  shell: blinkstick --morph --index 1 --set-color=GREEN
+
 - name: "{{ Ansible_Project }} | SSH into Server {{ inventory_hostname }} named {{ ansible_hostname }}"
   delegate_to: localhost
   wait_for:
@@ -13,29 +16,37 @@
 - name: "{{ Ansible_Project }} | Collect Device Information"
   raw: "df -h"
   register: server_results
- 
+
+
 - name: "{{ Ansible_Project }} | Toggle Orange Color"
-  shell: blinkstick --morph --set-color=ORANGE
- 
+  shell: blinkstick --morph --index 0 --set-color=ORANGE
+
+- name: "{{ Ansible_Project }} | Toggle Orange Color"
+  shell: blinkstick --morph --index 1 --set-color=BLUE
+
+
 - name: "{{ Ansible_Project }} | Display Server Information"
   debug:
     var: server_results.stdout
- 
-- name: "{{ Ansible_Project }} | Toggle LED Color"
-  shell: blinkstick --morph --set-color=GREEN
- 
+
+- name: "{{ Ansible_Project }} | Toggle Green LED Color"
+  shell: blinkstick --morph --index 0 --set-color=RED
+
+- name: "{{ Ansible_Project }} | Toggle Green LED Color"
+  shell: blinkstick --morph --index 1 --set-color=WHITE
+
 - name: "{{ Ansible_Project }} | Installing Nginx"
   become: yes
   become_method: sudo
   apt:
     name: nginx
     state: latest
- 
+
 - name: Check if NginX Directory file exists
   stat:
     path: /etc/nginx/sites-enabled/default
   register: nginx_rules
- 
+
 
 - name: "{{ Ansible_Project }} | Create a directory"
   file:
@@ -46,15 +57,37 @@
     mode: 0644
     recurse: yes
   when: nginx_rules.stat.exists != true
- 
-- name: "{{ Ansible_Project }} | Going Pink"
-  shell: blinkstick --morph --set-color=PURPLE
- 
+
+- name: "{{ Ansible_Project }} | Going Deep Purple"
+  shell: blinkstick --morph --index 0 --set-color=PURPLE
+
+- name: "{{ Ansible_Project }} | Going Deep Purple Pink"
+  shell: blinkstick --morph --index 1 --set-color=PINK
+
 - name: "{{ Ansible_Project }} | Copy the NginX Configuration File"
   template:
     src:  default.conf
     dest: /etc/nginx/sites-enabled/default
   notify: restart nginx
- 
+
 - name: "{{ Ansible_Project }} | Going GREEN"
-  shell: blinkstick --morph --set-color=GREEN
+  shell: blinkstick --morph --index 0 --set-color=GREEN
+
+- name: "{{ Ansible_Project }} | Going YELLOW"
+  shell: blinkstick --morph --index 1 --set-color=YELLOW
+
+- name: "{{ Ansible_Project }} | Checking Free Memory"
+  shell: "free -m"
+  register: myMemory
+
+- name: "{{ Ansible_Project }} | Check Date"
+  shell: "date"
+  register: myDate
+
+- name: "{{ Ansible_Project }} | Check Info"
+  debug:
+    var: myDate.stdout
+
+- name: "{{ Ansible_Project }} | Memories"
+  debug:
+    var: myMemory.stdout
