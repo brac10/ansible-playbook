@@ -1,53 +1,50 @@
 ---
 - name: "{{ Ansible_Project }} | Kube 0"
   shell:
-    cmd: python3 rangerPi.py 'Kube 0 is here and ready' 'en'
+    cmd: python3 rangerPi.py 'Cube 0. Online and Ready for Action.' 'ro'
     chdir: myDev/gTTs
 
 - name: "{{ Ansible_Project }} | Kube 1"
   shell:
-    cmd: python3 rangerPi.py 'Kube 1, Checking in. Whats for lunch, Im hungry.' 'fr'
+    cmd: python3 rangerPi.py 'Cube 1, Online. Present and accounted for. Lunch, Very Very hungry. In my country, dont get much real food' 'ru'
     chdir: myDev/gTTs
 
 - name: "{{ Ansible_Project }} | Kube 2"
   shell:
-    cmd: python3 rangerPi.py 'Kube 2. I am here, what no sausage ?' 'jw'
+    cmd: python3 rangerPi.py 'Cube 2. Here. Bacon again ? then, give the rookie my sausage' 'en'
     chdir: myDev/gTTs
 
 - name: "{{ Ansible_Project }} | Kube 3"
   shell:
-    cmd: python3 rangerPi.py 'Kube 3, Checking in. On site, on time and always under budget' 'en'
+    cmd: python3 rangerPi.py 'Cube 3, Checking in. On site, on time. Go Dutch or Go Home. Too sexy for my coding skills' 'de'
     chdir: myDev/gTTs
 
 - name: "{{ Ansible_Project }} | Kube 4"
   shell:
-    cmd: python3 rangerPi.py 'Kube 4. Just Checked in. Know what I mean ?' 'en-nz'
+    cmd: python3 rangerPi.py 'Cube 4. Just Checked in. Or did you check my code out ?' 'en-nz'
     chdir: myDev/gTTs
 
 - name: "{{ Ansible_Project }} | Kube 5"
   shell:
-    cmd: python3 rangerPi.py 'Kube 5. Oh, Im here. Packin and stackin' 'en'
+    cmd: python3 rangerPi.py 'Cube 5. Rockin the CovID look. Im here. Packin and Stackin.' 'et'
     chdir: myDev/gTTs
 
 - name: "{{ Ansible_Project }} | Kube 6"
   shell:
-    cmd: python3 rangerPi.py 'Kube 6. Not today. Dont make me sing. I am prettier than your alexa. No ?' 'fr'
+    cmd: python3 rangerPi.py 'Cube 6. Not today. Dont make me sing. Yes, prettier than Alexa.Get that all the time' 'fr'
     chdir: myDev/gTTs
-
 
 - name: "{{ Ansible_Project }} | Kube 7"
   shell:
-    cmd: python3 rangerPi.py 'Kube 7. I am present. But not much more.' 'es-es'
+    cmd: python3 rangerPi.py 'Cube 7. I am alive and still kickin your sorry ass.' 'es-es'
     chdir: myDev/gTTs
-
 
 - name: "{{ Ansible_Project }} | Kube 8"
   shell:
-    cmd: python3 rangerPi.py 'Kube 8 is here. But not happy' 'en-uk'
+    cmd: python3 rangerPi.py 'Cube 8 is here. But not happy. Mama Mia, Ive got the CovID' 'cs'
     chdir: myDev/gTTs
-
 
 - name: "{{ Ansible_Project }} | Kube 9"
   shell:
-    cmd: python3 rangerPi.py 'Kube 9 is 5 by 5 and thats all you get out of me. Call frenchie, she will take your order' 'en'
+    cmd: python3 rangerPi.py 'Cube 9 is 10 by 10. Thats all you will get out of me. Call my French Fry, she will take your order. Better yet, heres a quarter, call Alexa, Shes my sister, she has no CovID, butt her mother might.' 'it'
     chdir: myDev/gTTs

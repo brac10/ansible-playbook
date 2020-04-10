@@ -22,6 +22,19 @@
 192.168.1.58
 192.168.1.59
 
+[voice]
+192.168.1.59
+
+[voice:vars]
+become=yes
+deploy_target=pi
+become_method=sudo
+ansible_user=pi
+ansible_password=Ranger1975#
+ansible_connection=ssh
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
+
 # Ubuntu Servers
 [Ubuntu]
 192.168.1.208
@@ -29,9 +42,9 @@
 
 [Ubuntu:vars]
 become=yes
-ansible_sudo_pass=tara10
-ansible_user=scott
-ansible_password=tara10
+ansible_sudo_pass=Ranger1975#
+ansible_user=ec2-user
+ansible_password=Ranger1975#
 ansible_connection=ssh
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 
