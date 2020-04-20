@@ -1,0 +1,5 @@
+---
+# defaults file for defcon-4
+created_by: "Scott Braconnier"
+Ansible_Project: "Chaos-Drill"
+appname: "Ranger"

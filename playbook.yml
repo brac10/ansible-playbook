@@ -5,67 +5,10 @@
 
 - hosts: launched
   connection: ssh
-  become: yes
-  gather_facts: no
+  gather_facts: yes
 
-  vars:
-    users:
-      - ec2-user
-      - pi
-  tasks:
-    - name: "Create user accounts on Raspberry Pis"
-      user:
-        name: "{{ item }}"
-        comment: "ansible user account"
-        local: no
-        create_home: yes
-        generate_ssh_key: no
-      with_items: "{{ users }}"
-    - name: "Add authorized keys on Raspberry Pis"
-      authorized_key:
-        user: "{{ item }}"
-        key: "{{ lookup('file', 'files/' + 'bracomITG.pub') }}"
-        state: present
-      with_items: "{{ users }}"
-    - name: "Allow admin users to sudo without a password on Raspberry Pis"
-      lineinfile:
-        dest: "/etc/sudoers"
-        state: "present"
-        regexp: "^%root"
-        line: "%root ALL=(ALL) NOPASSWD: ALL"
-
-- hosts: Ubuntu
-  connection: ssh
-  become: yes
-  gather_facts: true
-
-  vars:
-    users:
-      - ec2-user
-      - pi
-
-  tasks:
-    - name: "Create user Service Accounts on Ubuntu Servers"
-      user:
-        name: "{{ item }}"
-        comment: "ansible user account"
-        local: no
-        create_home: yes
-        generate_ssh_key: no
-      with_items: "{{ users }}"
-    - name: "Add authorized keys on Ubuntu Servers"
-      authorized_key:
-        user: "{{ item }}"
-        key: "{{ lookup('file', 'files/' + 'bracomITG.pub') }}"
-        state: present
-      with_items: "{{ users }}"
-    - name: "Allow admin users to sudo without a password on Ubuntu Servers"
-      lineinfile:
-        dest: "/etc/sudoers"
-        state: "present"
-        regexp: "^%root"
-        line: "%root ALL=(ALL) NOPASSWD: ALL"
-#  roles:
-#    - pi-adduser
-#    - pi-rollcall
-#    - pi-initial
+  roles:
+     - pi-initial
+     - defcon
+     - pi-rollcall
+     - tactical

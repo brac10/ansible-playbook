@@ -1,0 +1,13 @@
+---
+- name: "Install Updates"
+  apt:
+    name: "*"
+    state: latest
+
+# - name: "Install Distribution Upgrades"
+#   apt:
+#     upgrade: dist
+
+# - name: "Install Distribution Upgrades"
+#   apt:
+#     update_cache: yes

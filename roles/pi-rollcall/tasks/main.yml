@@ -1,53 +1,102 @@
 ---
-- name: "{{ Ansible_Project }} | Kube 0"
+- name: Identify Pi
+  debug: var=ansible_facts
+
+- name: Set IP Information
+  set_fact:
+      myPiIP: "{{ ansible_facts['eth0']['ipv4']['address']}}"
+      myPiName: "{{ ansible_facts['nodename'] }}"
+
+- name: "{{ Ansible_Project }}"
+  command: "bash who.sh"
+  when: "myPiIP == '192.168.1.50'"
+
+- name: "{{ Ansible_Project }}"
   shell:
-    cmd: python3 rangerPi.py 'Kube 0 is here and ready' 'en'
-    chdir: myDev/gTTs
+    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\0.\Blue.' 'ro'
+  when: "myPiIP == '192.168.1.50'"
 
-- name: "{{ Ansible_Project }} | Kube 1"
+
+- name: "{{ Ansible_Project }} "
+  command: "bash who.sh"
+  when: "myPiIP == '192.168.1.51'"
+
+- name: "{{ Ansible_Project }} "
   shell:
-    cmd: python3 rangerPi.py 'Kube 1, Checking in. Whats for lunch, Im hungry.' 'fr'
-    chdir: myDev/gTTs
+    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\1.\Orange' 'en-uk'
+  when: "myPiIP == '192.168.1.51'"
 
-- name: "{{ Ansible_Project }} | Kube 2"
+- name: "{{ Ansible_Project }} "
+  command: "bash who.sh"
+  when: "myPiIP == '192.168.1.52'"
+
+- name: "{{ Ansible_Project }} "
   shell:
-    cmd: python3 rangerPi.py 'Kube 2. I am here, what no sausage ?' 'jw'
-    chdir: myDev/gTTs
+    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\2.\Red,\present' 'en'
+  when: "myPiIP == '192.168.1.52'"
 
-- name: "{{ Ansible_Project }} | Kube 3"
+
+- name: "{{ Ansible_Project }} "
+  command: "bash who.sh"
+  when: "myPiIP == '192.168.1.53'"
+
+- name: "{{ Ansible_Project }} "
   shell:
-    cmd: python3 rangerPi.py 'Kube 3, Checking in. On site, on time and always under budget' 'en'
-    chdir: myDev/gTTs
+    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\three\Green,\Here' 'de'
+  when: "myPiIP == '192.168.1.53'"
 
-- name: "{{ Ansible_Project }} | Kube 4"
+- name: "{{ Ansible_Project }} "
+  command: "bash who.sh"
+  when: "myPiIP == '192.168.1.54'"
+
+- name: "{{ Ansible_Project }} "
   shell:
-    cmd: python3 rangerPi.py 'Kube 4. Just Checked in. Know what I mean ?' 'en-nz'
-    chdir: myDev/gTTs
+    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\4,\Purple.\Yo' 'en-nz'
+  when: "myPiIP == '192.168.1.54'"
 
-- name: "{{ Ansible_Project }} | Kube 5"
+- name: "{{ Ansible_Project }} "
+  command: "bash who.sh"
+  when: "myPiIP == '192.168.1.55'"
+
+- name: "{{ Ansible_Project }} "
   shell:
-    cmd: python3 rangerPi.py 'Kube 5. Oh, Im here. Packin and stackin' 'en'
-    chdir: myDev/gTTs
+    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\five\White\Here.' 'pl'
+  when: "myPiIP == '192.168.1.55'"
 
-- name: "{{ Ansible_Project }} | Kube 6"
+
+- name: "{{ Ansible_Project }} "
+  command: "bash who.sh"
+  when: "myPiIP == '192.168.1.56'"
+
+- name: "{{ Ansible_Project }} "
   shell:
-    cmd: python3 rangerPi.py 'Kube 6. Not today. Dont make me sing. I am prettier than your alexa. No ?' 'fr'
-    chdir: myDev/gTTs
+    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\six\Baby\Blue.Here.' 'fr'
+  when: "myPiIP == '192.168.1.56'"
 
+- name: "{{ Ansible_Project }}"
+  command: "bash who.sh"
+  when: "myPiIP == '192.168.1.57'"
 
-- name: "{{ Ansible_Project }} | Kube 7"
+- name: "{{ Ansible_Project }}"
   shell:
-    cmd: python3 rangerPi.py 'Kube 7. I am present. But not much more.' 'es-es'
-    chdir: myDev/gTTs
+    cmd: ssh 192.168.1.59 python3 rangerPi.py 'cube\ Seven\Peechie\Here.\I\think\its\ a\color' 'es-es'
+  when: "myPiIP == '192.168.1.57'"
 
 
-- name: "{{ Ansible_Project }} | Kube 8"
+- name: "{{ Ansible_Project }} "
+  command: "bash who.sh"
+  when: "myPiIP == '192.168.1.58'"
+
+- name: "{{ Ansible_Project }} "
   shell:
-    cmd: python3 rangerPi.py 'Kube 8 is here. But not happy' 'en-uk'
-    chdir: myDev/gTTs
+    cmd: ssh 192.168.1.59 python3 rangerPi.py 'cube\eight.\Light\Green,\here' 'cs'
+  when: "myPiIP == '192.168.1.58'"
 
+- name: "{{ Ansible_Project }} "
+  command: "bash who.sh"
+  when: "myPiIP == '192.168.1.59'"
 
-- name: "{{ Ansible_Project }} | Kube 9"
+- name: "{{ Ansible_Project }} | {{ myPiName }}"
   shell:
-    cmd: python3 rangerPi.py 'Kube 9 is 5 by 5 and thats all you get out of me. Call frenchie, she will take your order' 'en'
-    chdir: myDev/gTTs
+    cmd: python3 rangerPi.py 'Kube\nine,\Gold\here' 'it'
+  when: "myPiIP == '192.168.1.59'"
