@@ -1,9 +1,5 @@
 ---
-- hosts: localhost
-  connection: local
-  gather_facts: no
-
-- hosts: launched
+- hosts: voice
   connection: ssh
   gather_facts: yes
 
@@ -12,3 +8,4 @@
      - defcon
      - pi-rollcall
      - tactical
+     - chaos

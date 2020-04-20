@@ -22,7 +22,7 @@
 192.168.1.58
 192.168.1.59
 
-[k8s-servers]
+[k8servers]
 192.168.1.50
 192.168.1.51
 192.168.1.52
@@ -34,7 +34,7 @@
 192.168.1.58
 192.168.1.59
 
-[master]
+[k8smaster]
 192.168.1.59
 
 [defcon]
@@ -50,7 +50,7 @@ ansible_connection=ssh
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 
 
-[k8s-servers:vars]
+[k8servers:vars]
 become=yes
 deploy_target=pi
 become_method=sudo
@@ -86,7 +86,7 @@ ansible_password=Ranger1975#
 ansible_connection=ssh
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 
-[k8s-master:vars]
+[k8smaster:vars]
 become=yes
 deploy_target=pi
 become_method=sudo
