@@ -1,0 +1,37 @@
+---
+- name: Identify Pi
+  debug: var=ansible_facts
+
+- name: Set IP Information
+  set_fact:
+      myPiIP: "{{ ansible_facts['eth0']['ipv4']['address']}}"
+      myPiName: "{{ ansible_facts['nodename'] }}"
+
+- name: "{{ Ansible_Project }} | RED"
+  shell: blinkstick --index 0 RED
+
+- name: "{{ Ansible_Project }} | RED"
+  shell: blinkstick --index 1 RED
+
+- name: "Announcement"
+  shell:
+    cmd: python3 rangerPi.py 'Lighting at Tactical  ' 'en-us'
+    chdir: myDev/gTTs
+  when: "myPiIP == '192.168.1.59'"
+
+- name: "Displaying Kubernetes Cluster POD"
+  shell:
+    cmd: python3 rangerPi.py 'Engaging all pods to Kubernetes Cluster' 'en-us'
+    chdir: myDev/gTTs
+  when: "myPiIP == '192.168.1.59'"
+
+- name: "Displaying Kubernetes Cluster POD"
+  shell:
+    cmd: kubectl get pods --all-namespaces
+  register: kubernetes
+  when: "myPiIP == '192.168.1.59'"
+
+- name: Output
+  debug:
+    msg: "{{ kubernetes.stdout_lines }}"
+  when: "myPiIP == '192.168.1.59'"

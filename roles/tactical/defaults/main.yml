@@ -1,0 +1,5 @@
+---
+# defaults file for tactical
+created_by: "Scott Braconnier"
+Ansible_Project: "Tactical Lighting"
+appname: "Ranger"

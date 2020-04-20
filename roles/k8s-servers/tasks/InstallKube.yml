@@ -1,0 +1,3 @@
+---
+- name: "Install Kube Tools"
+  shell: "sudo apt install kubeadm kubectl kubelet"

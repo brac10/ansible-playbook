@@ -1,0 +1,6 @@
+---
+- name: "Copy Docker Daemon"
+  copy:
+    src: files/daemon.json
+    dest: ~/etc/docker/
+    force: yes

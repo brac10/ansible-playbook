@@ -1,0 +1,6 @@
+---
+- name: "Update CMDLine Text"
+  copy:
+    src: files/cmdline.txt
+    dest: ~/boot/
+    force: yes
