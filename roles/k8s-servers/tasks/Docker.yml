@@ -1,0 +1,6 @@
+---
+#- name: Install Docker
+#  shell: "curl -sSL get.docker.com |  sh"
+
+- name: Add Pi to Docker User group_by
+  shell: "sudo usermod -aG docker pi"

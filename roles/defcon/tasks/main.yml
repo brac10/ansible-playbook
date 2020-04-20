@@ -1,0 +1,23 @@
+---
+# tasks file for defcon
+- name: Identify Pi
+  debug: var=ansible_facts
+
+- name: Set IP Information
+  set_fact:
+      myPiIP: "{{ ansible_facts['eth0']['ipv4']['address']}}"
+      myPiName: "{{ ansible_facts['nodename'] }}"
+
+- name: "{{ Ansible_Project }} | Going Tactical"
+  shell:
+    cmd: python3 rangerPi.py 'This is Crystal Palace, we are closing the mountain, place us at Def-Con 2. Covid procedures in place' 'en-us'
+    chdir: myDev/gTTs
+  when: "myPiIP == '192.168.1.59'"
+
+- name: "{{ Ansible_Project }} | Going Tactical"
+  shell:
+    cmd: python3 rangerPi.py 'Need to go tactical.' 'en-UK'
+    chdir: myDev/gTTs
+  when: "myPiIP == '192.168.1.59'"
+
+- include: "texas.yml"

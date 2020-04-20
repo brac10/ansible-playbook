@@ -1,0 +1,6 @@
+---
+- name: "Copy Kubernetes Repo Location"
+  copy:
+    src: files/kubernetes.list
+    dest: ~/etc/apt/sources.list.d/
+    force: yes

@@ -1,0 +1,9 @@
+---
+- name: "Turn off Swap"
+  shell: "sudo dphys-swapfile swapoff"
+
+- name: "Uninstall Swap"
+  shell: "sudo dphys-swapfile uninstall"
+
+- name: "Purge Swap"
+  shell: "sudo apt purge dphys-swapfile"

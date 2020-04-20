@@ -22,10 +22,35 @@
 192.168.1.58
 192.168.1.59
 
-[voice]
+[k8s-servers]
+192.168.1.50
+192.168.1.51
+192.168.1.52
+192.168.1.53
+192.168.1.54
+192.168.1.55
+192.168.1.56
+192.168.1.57
+192.168.1.58
 192.168.1.59
 
-[voice:vars]
+[master]
+192.168.1.59
+
+[defcon]
+192.168.1.59
+
+[launched:vars]
+become=yes
+deploy_target=pi
+become_method=sudo
+ansible_user=pi
+ansible_password=Ranger1975#
+ansible_connection=ssh
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
+
+[k8s-servers:vars]
 become=yes
 deploy_target=pi
 become_method=sudo
@@ -61,7 +86,16 @@ ansible_password=Ranger1975#
 ansible_connection=ssh
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 
-[launched:vars]
+[k8s-master:vars]
+become=yes
+deploy_target=pi
+become_method=sudo
+ansible_user=pi
+ansible_password=Ranger1975#
+ansible_connection=ssh
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
+[defcon:vars]
 become=yes
 deploy_target=pi
 become_method=sudo
