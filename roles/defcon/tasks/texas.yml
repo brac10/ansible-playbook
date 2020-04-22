@@ -1,13 +1,17 @@
 ---
+- name: "Set Voice"
+  shell: blinkstick --morph GREEN
+  when: "myPiIP == '192.168.1.58'"
+
 - name: "{{ Ansible_Project }} | Texas Welcome"
   shell:
-    cmd: python3 rangerPi.py 'Where yall from ?' 'en-us'
+    cmd: python3 rangerPi.py 'Where ya from ? ' 'en-us'
     chdir: myDev/gTTs
   when: "myPiIP == '192.168.1.59'"
 
 - name: "{{ Ansible_Project }} | Howdy"
   shell:
-    cmd: python3 rangerPi.py 'Why Texas Maam !' 'de'
+    cmd: python3 rangerPi.py 'Texas Maam !' 'de'
     chdir: myDev/gTTs
   when: "myPiIP == '192.168.1.59'"
 
@@ -17,8 +21,20 @@
     chdir: myDev/gTTs
   when: "myPiIP == '192.168.1.59'"
 
+- name: "Set Voice"
+  shell: blinkstick --morph BLACK
+  when: "myPiIP == '192.168.1.58'"
+
+- name: "Set Voice"
+  shell: blinkstick --morph RED
+  when: "myPiIP == '192.168.1.59'"
+
 - name: "{{ Ansible_Project }} | OMG"
   shell:
-    cmd: python3 rangerPi.py 'Ok you PODS, Lets take a quick roll call' 'en-uk'
+    cmd: python3 rangerPi.py 'Ok, all PODS, Lets take a quick roll call' 'en-uk'
     chdir: myDev/gTTs
+  when: "myPiIP == '192.168.1.59'"
+
+- name: "Set Voice"
+  shell: blinkstick --morph BLACK
   when: "myPiIP == '192.168.1.59'"
