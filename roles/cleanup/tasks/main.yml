@@ -1,0 +1,135 @@
+---
+# tasks file for cleanup
+- name: "Remove Geany"
+  apt:
+    name: Geany
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Sense HAT Emulator"
+  apt:
+    name: sense-hat
+    state: absent
+    force_apt_get: True
+
+- name: "Thonny Python IDE Removal"
+  apt:
+    name: thonny
+    state: absent
+    force_apt_get: True
+
+- name: "Green Foot IDE"
+  apt:
+    name: Greenfoot Java IDE
+    state: absent
+    force_apt_get: True
+
+- name: "Remove BlueJ Not Needed on SD Card"
+  apt:
+    name: bluej*
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Claws Mail"
+  apt:
+    name: claws-mail*
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Code the Classics"
+  apt:
+    name: code-the-classics
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Greenfoot"
+  apt:
+    name: greenfoot-unbundled
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Minecraft"
+  apt:
+    name: minecraft-pi
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Wolfram-Engine Not Needed on SD Card"
+  apt:
+    name: wolfram-engine
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Mu"
+  apt:
+    name: mu-editor
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Python Games"
+  apt:
+    name: python-games
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Scratch 2"
+  apt:
+    name: scratch2
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Scratch 3"
+  apt:
+    name: scratch3
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Sonic Pi"
+  apt:
+    name: sonic-pi*
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Office Not Needed on SD Card"
+  apt:
+    name: libreoffice*
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Scratch on SD Card"
+  apt:
+    name: scratch
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Geany on SD Card"
+  apt:
+    name: geany
+    state: absent
+    force_apt_get: True
+
+- name: "Remove Smart Sim"
+  apt:
+    name: smartsim
+    state: absent
+    force_apt_get: True
+
+
+- name: "Remove Geany on SD Card"
+  apt:
+    name: geany-common
+    state: absent
+    force_apt_get: True
+
+- name: "Clean Up Cache"
+  apt:
+    update_cache: yes
+    force_apt_get: True
+
+- name: "Remove any Unused dependencies"
+  apt:
+    autoremove: yes
+    force_apt_get: True
+
+- name: "Generate Final Report"
+  shell: "dpkg --get-selections | grep -v deinstall > ~/Desktop/packages.txt"

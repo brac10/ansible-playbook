@@ -1,11 +1,12 @@
 ---
-- hosts: voice
+- hosts: launched
   connection: ssh
   gather_facts: yes
-
+  become: true
+  
   roles:
-     - pi-initial
-     - defcon
-     - pi-rollcall
-     - tactical
-     - chaos
+     - cleanup
+#- pi-initial
+#- defcon
+#- pi-rollcall
+#- tactical

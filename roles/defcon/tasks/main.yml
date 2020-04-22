@@ -8,16 +8,33 @@
       myPiIP: "{{ ansible_facts['eth0']['ipv4']['address']}}"
       myPiName: "{{ ansible_facts['nodename'] }}"
 
+- name: "Set Voice"
+  shell: blinkstick --morph GREEN
+  when: "myPiIP == '192.168.1.58'"
+
 - name: "{{ Ansible_Project }} | Going Tactical"
   shell:
-    cmd: python3 rangerPi.py 'This is Crystal Palace, we are closing the mountain, place us at Def-Con 2. Covid procedures in place' 'en-us'
+    cmd: python3 rangerPi.py 'This is Crystal Palace. Closing the vault. Place us at Def-Con 2. Covid procedures in place' 'en-us'
     chdir: myDev/gTTs
+  when: "myPiIP == '192.168.1.59'"
+
+- name: "Set Voice"
+  shell: blinkstick --morph BLACK
+  when: "myPiIP == '192.168.1.58'"
+
+
+- name: "Set Voice"
+  shell: blinkstick --morph RED
   when: "myPiIP == '192.168.1.59'"
 
 - name: "{{ Ansible_Project }} | Going Tactical"
   shell:
     cmd: python3 rangerPi.py 'Need to go tactical.' 'en-UK'
     chdir: myDev/gTTs
+  when: "myPiIP == '192.168.1.59'"
+
+- name: "Set Voice"
+  shell: blinkstick --morph BLACK
   when: "myPiIP == '192.168.1.59'"
 
 - include: "texas.yml"
