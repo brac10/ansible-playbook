@@ -1,0 +1,4 @@
+boto
+botocore
+boto3
+pywinrm

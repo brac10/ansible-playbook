@@ -12,13 +12,15 @@
   when: "myPiIP == '192.168.1.59'"
 
 - name: "{{ Ansible_Project }} | OMG"
-  shell:
-    cmd: python3 rangerPi.py 'Texas !! Well, only two things from Texas!' 'en-us'
+  shell: >
+    cmd: python3 rangerPi.py
+    'Texas !! Well, only two things from Texas!' 'en-us'
     chdir: myDev/gTTs
   when: "myPiIP == '192.168.1.59'"
 
 - name: "{{ Ansible_Project }} | OMG"
-  shell:
-    cmd: python3 rangerPi.py 'Ok you PODS, Lets take a quick roll call' 'en-uk'
+  shell: >
+    cmd: python3 rangerPi.py
+    'Ok you PODS, Lets take a quick roll call' 'en-uk'
     chdir: myDev/gTTs
   when: "myPiIP == '192.168.1.59'"

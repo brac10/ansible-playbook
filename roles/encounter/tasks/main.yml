@@ -1,0 +1,12 @@
+---
+# tasks file for encounter
+- name: Identify Server Information
+  debug:
+    var: ansible_facts['nodename']
+
+- name: "Play tones to Welcome Host: {{ ansible_facts['nodename'] }}"
+  shell: play -q -n synth 1 sin 783.99 && \
+    play -q -n synth 1 sin 880.00 && \
+    play -q -n synth 1 sin 698.46 && \
+    play -q -n synth 1 sin 349.23 && \
+    play -q -n synth 2 sin 523.25

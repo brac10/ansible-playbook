@@ -1,0 +1,119 @@
+---
+- name: Install base packages locales
+  apt:
+    name: locales
+    state: present
+- name: Install base build-essential
+  apt:
+    name: build-essential
+    state: present
+- name: Install base packages acl
+  apt:
+    name: acl
+    state: present
+- name: Install base packages ntp
+  apt:
+    name: ntp
+    state: present
+- name: Install base packages htop
+  apt:
+    name: htop
+    state: present
+- name: Install base packages git
+  apt:
+    name: git
+    state: present
+
+- name: Install base packages supervisor
+  apt:
+    name: supervisor
+    state: present
+
+- name: Install base packages python
+  apt:
+    name: python
+    state: present
+
+- name: Install base packages python3-pip
+  apt:
+    name: python3-pip
+    state: present
+
+- name: Install base packages nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Install base packages python-apt
+  apt:
+    name: python-apt
+    state: present
+
+- name: Install venv
+  apt:
+    name: python3-venv
+    state: present
+
+- name: Install Setup Tools
+  apt:
+    name: python-setuptools
+    state: present
+
+- name: Install Setup Wheel
+  apt:
+    name: python3-wheel
+    state: present
+
+- name: Install Python Pip
+  apt:
+    name: python3-pip
+    state: present
+
+
+- name: Check the version of python 3.x exists
+  stat:
+    path: /usr/local/bin/python3.8
+  tags: python
+  register: python_result
+
+- name: Update apt-cache check for results
+  apt:
+    update_cache: yes
+  tags: python
+  when:
+    python_result.stat.exists == False
+
+- name: Upgrade Pip for Virtual Environments
+  shell: "pip install virtualenv virtualenvwrapper"
+  become_method: sudo
+
+# - name: Update Bashrc with Pathing
+#   shell: "echo -e \n# virtualenv and virtualenvwrapper >> ~/.bashrc"
+#   become_user: "{{ ansible_user }}"
+
+# - name: Update Bashrc with Working Home
+#   shell: "echo export WORKON_HOME=$HOME/.virtualenvs >> ~/.bashrc"
+#   become_user: "{{ ansible_user }}"
+
+# - name: Update Bashrc with Pathing
+#   shell: "echo export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3 >> ~/.bashrc"
+#   become_user: "{{ ansible_user }}"
+
+# - name: Update wrapper
+#   shell: "echo source /usr/local/bin/virtualenvwrapper.sh >> ~/.bashrc"
+#   become_user: "{{ ansible_user }}"
+
+
+# - name: Initiate a virtualenvironment for Python
+#   pip:
+#     virtualenv="{{ virtualenv_dir }}"
+#     virtualenv_python="{{ virtualenv_python }}"
+#     requirements= "{{app_dir}}/requirements.txt"
+
+- name: Install base packages for Ansible Boto, Boto3, BotoCore, pywinrm, awscli
+  pip:
+    name: botocore, pywinrm, boto3, botocore, boto, awscli, numpy
+
+- name: Install docker, and helm, docker-compose
+  pip:
+    name: docker, helm, docker-compose

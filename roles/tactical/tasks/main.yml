@@ -14,24 +14,50 @@
   shell: blinkstick --index 1 RED
 
 - name: "Announcement"
-  shell:
-    cmd: python3 rangerPi.py 'Lighting at Tactical  ' 'en-us'
-    chdir: myDev/gTTs
+  shell: >
+      cmd: python3 rangerPi.py 'Set Lighting to Tactical  ' 'en-us'
+      chdir: myDev/gTTs
+  when: "myPiIP == '192.168.1.59'"
+
+- name: Tactical Beeps
+  shell: >
+      cmd: mpg123 /home/pi/myDev/gTTs/sounds/tactical_beep_sequence.mp3
   when: "myPiIP == '192.168.1.59'"
 
 - name: "Displaying Kubernetes Cluster POD"
-  shell:
-    cmd: python3 rangerPi.py 'Engaging all pods to Kubernetes Cluster' 'en-us'
-    chdir: myDev/gTTs
+  shell: >
+      cmd: python3 rangerPi.py
+      'Start Servers for Ansible Tower and Jenkins' 'en-us'
+      chdir: myDev/gTTs
   when: "myPiIP == '192.168.1.59'"
 
-- name: "Displaying Kubernetes Cluster POD"
+- name: Start Servers
   shell:
-    cmd: kubectl get pods --all-namespaces
-  register: kubernetes
+      cmd: mpg123 /home/pi/myDev/gTTs/sounds/tos_com_beep_1.mp3
   when: "myPiIP == '192.168.1.59'"
 
-- name: Output
-  debug:
-    msg: "{{ kubernetes.stdout_lines }}"
+- name: "Start Scanning for Dynamic Inventory Elements"
+  shell:
+      cmd: python3 rangerPi.py 'Begin Deep Inventory Scans' 'en-us'
+      chdir: myDev/gTTs
+  when: "myPiIP == '192.168.1.59'"
+
+- name: Start Servers
+  shell:
+      cmd: mpg123 /home/pi/myDev/gTTs/sounds/tos_tricorder_scan.mp3
+  when: "myPiIP == '192.168.1.59'"
+
+- name: Scanning
+  shell:
+      cmd: mpg123 /home/pi/myDev/gTTs/sounds/tos_scanner.mp3
+  when: "myPiIP == '192.168.1.59'"
+
+- name: Scanning
+  shell:
+      cmd: mpg123 /home/pi/myDev/gTTs/sounds/tos_working.mp3
+  when: "myPiIP == '192.168.1.59'"
+
+- name: Scanning
+  shell:
+      cmd: python3 rangerPi.py 'Wow thats an old computer' 'en'
   when: "myPiIP == '192.168.1.59'"

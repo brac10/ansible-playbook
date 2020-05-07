@@ -3,5 +3,6 @@
         "NOPASSWD",
         "bracom",
         "sudoers"
-    ]
+    ],
+    "python.pythonPath": "/usr/bin/python3"
 }

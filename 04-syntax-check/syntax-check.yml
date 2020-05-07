@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - include_tasks: dates.yml
+    - import_tasks: free.yml
+    - name: Print a message
+      debug:
+        msg: "Hello Texas"

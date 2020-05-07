@@ -1,0 +1,11 @@
+---
+# Variable setup.
+- name: Remove Apache2
+  apt: >
+    pkg="{{ item }}"
+    state=absent
+    purge=yes
+    force=yes
+  with_items:
+    - apache2*
+  sudo: yes
