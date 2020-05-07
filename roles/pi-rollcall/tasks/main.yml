@@ -13,17 +13,20 @@
 
 - name: "{{ Ansible_Project }}"
   shell:
-    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\0.\Blue.' 'ro'
+      cmd: >
+        ssh 192.168.1.59 python3
+        rangerPi.py 'Kube\0.\Blue.' 'ro'
   when: "myPiIP == '192.168.1.50'"
 
-
 - name: "{{ Ansible_Project }} "
   command: "bash who.sh"
   when: "myPiIP == '192.168.1.51'"
 
 - name: "{{ Ansible_Project }} "
   shell:
-    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\1.\Orange' 'en-uk'
+      cmd: >
+        ssh 192.168.1.59 python3
+        rangerPi.py 'Kube\1.\Orange' 'en-uk'
   when: "myPiIP == '192.168.1.51'"
 
 - name: "{{ Ansible_Project }} "
@@ -32,9 +35,10 @@
 
 - name: "{{ Ansible_Project }} "
   shell:
-    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\2.\Red,\present' 'en'
+      cmd: >
+        ssh 192.168.1.59 python3
+        rangerPi.py 'Kube\2.\Red,\present' 'en'
   when: "myPiIP == '192.168.1.52'"
-
 
 - name: "{{ Ansible_Project }} "
   command: "bash who.sh"
@@ -42,7 +46,9 @@
 
 - name: "{{ Ansible_Project }} "
   shell:
-    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\three\Green\Here' 'de'
+      cmd: >
+        ssh 192.168.1.59 python3
+        rangerPi.py 'Kube\three\Green,\Here' 'de'
   when: "myPiIP == '192.168.1.53'"
 
 - name: "{{ Ansible_Project }} "
@@ -51,7 +57,9 @@
 
 - name: "{{ Ansible_Project }} "
   shell:
-    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\4,\Purple.\Yo' 'en-nz'
+      cmd: >
+        ssh 192.168.1.59 python3
+        rangerPi.py 'Kube\4,\Purple.\Yo' 'en-nz'
   when: "myPiIP == '192.168.1.54'"
 
 - name: "{{ Ansible_Project }} "
@@ -59,8 +67,9 @@
   when: "myPiIP == '192.168.1.55'"
 
 - name: "{{ Ansible_Project }} "
-  shell:
-    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Kube\five\White\Here.' 'pl'
+  shell: >
+      cmd: ssh 192.168.1.59 python3
+        rangerPi.py 'Kube\five\White\Here.' 'pl'
   when: "myPiIP == '192.168.1.55'"
 
 
@@ -70,7 +79,10 @@
 
 - name: "{{ Ansible_Project }} "
   shell:
-    cmd: ssh 192.168.1.59 python3 rangerPi.py 'Cube\six\Baby\Blue.Here.' 'fr'
+      cmd: >
+        ssh 192.168.1.59
+        python3 rangerPi.py
+        'Kube\six\Baby\Blue.Here.' 'fr'
   when: "myPiIP == '192.168.1.56'"
 
 - name: "{{ Ansible_Project }}"
@@ -79,9 +91,11 @@
 
 - name: "{{ Ansible_Project }}"
   shell:
-    cmd: ssh 192.168.1.59 python3 rangerPi.py 'cube\Seven\Peach.\Here.\I\think\its\ a\color' 'en-us'
+      cmd: >
+        ssh 192.168.1.59 python3 rangerPi.py
+        'cube\ Seven\Peechie\Here.\I\think\its\ a\color'
+        'es-es'
   when: "myPiIP == '192.168.1.57'"
-
 
 - name: "{{ Ansible_Project }} "
   command: "bash who.sh"
@@ -89,7 +103,9 @@
 
 - name: "{{ Ansible_Project }} "
   shell:
-    cmd: ssh 192.168.1.59 python3 rangerPi.py 'cube\eight.\Light\Green,\here' 'cs'
+      cmd: >
+       ssh 192.168.1.59 python3
+          rangerPi.py 'cube\eight.\Light\Green,\here' 'cs'
   when: "myPiIP == '192.168.1.58'"
 
 - name: "{{ Ansible_Project }} "
@@ -98,5 +114,5 @@
 
 - name: "{{ Ansible_Project }} | {{ myPiName }}"
   shell:
-    cmd: python3 rangerPi.py 'Kube\nine,\Gold\here' 'it'
+      cmd: python3 rangerPi.py 'Kube\nine,\Gold\here' 'it'
   when: "myPiIP == '192.168.1.59'"

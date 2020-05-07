@@ -3,6 +3,6 @@
   connection: ssh
   gather_facts: yes
   become: true
-  
+
   roles:
      - morning

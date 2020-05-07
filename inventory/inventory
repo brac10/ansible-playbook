@@ -1,26 +1,17 @@
 [localhost]
-192.168.1.50
-192.168.1.51
-192.168.1.52
-192.168.1.53
-192.168.1.54
-192.168.1.55
-192.168.1.56
-192.168.1.57
-192.168.1.58
-192.168.1.59
+127.0.0.1
 
 [launched]
-192.168.1.50
-192.168.1.51
-192.168.1.52
-192.168.1.53
-192.168.1.54
-192.168.1.55
-192.168.1.56
-192.168.1.57
-192.168.1.58
-192.168.1.59
+k8s-worker-0 ansible-host=192.168.1.50
+k8s-worker-1 ansible_host=192.168.1.51
+k8s-worker-2 ansible_host=192.168.1.52
+k8s-worker-3 ansible_host=192.168.1.53
+k8s-worker-4 ansible_host=192.168.1.54
+k8s-worker-5 ansible_host=192.168.1.55
+k8s-worker-6 ansible_host=192.168.1.56
+k8s-worker-7 ansible_host=192.168.1.57
+k8s-worker-8 ansible_host=192.168.1.58
+k8s-master   ansible_host=192.168.1.59
 
 [k8servers]
 192.168.1.50
@@ -37,6 +28,18 @@
 [k8smaster]
 192.168.1.59
 
+[encounter]
+192.168.1.251
+192.168.1.208
+192.168.1.209
+
+[encounter:vars]
+ansible_user=scott
+ansible_password=tara10
+ansible_connection=ssh
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
+
 [defcon]
 192.168.1.59
 
@@ -49,7 +52,6 @@ ansible_password=Ranger1975#
 ansible_connection=ssh
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 
-
 [k8servers:vars]
 become=yes
 deploy_target=pi
@@ -59,17 +61,17 @@ ansible_password=Ranger1975#
 ansible_connection=ssh
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 
-
 # Ubuntu Servers
 [Ubuntu]
+192.168.1.251
 192.168.1.208
 192.168.1.209
 
 [Ubuntu:vars]
 become=yes
-ansible_sudo_pass=Ranger1975#
-ansible_user=ec2-user
-ansible_password=Ranger1975#
+ansible_sudo_pass=tara10
+ansible_user=scott
+ansible_password=tara
 ansible_connection=ssh
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 
@@ -78,13 +80,9 @@ ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 192.168.1.251
 
 [localhost:vars]
-become=yes
-deploy_target=pi
-become_method=sudo
-ansible_user=pi
-ansible_password=Ranger1975#
-ansible_connection=ssh
-ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+ansible_user=scott
+ansible_sudo_pass=tara10
+ansible_password=tara10
 
 [k8smaster:vars]
 become=yes
@@ -96,6 +94,22 @@ ansible_connection=ssh
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 
 [defcon:vars]
+become=yes
+deploy_target=pi
+become_method=sudo
+ansible_user=pi
+ansible_password=Ranger1975#
+ansible_connection=ssh
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
+[multi:children]
+Ubuntu
+defcon
+launched
+localhost
+k8smaster
+
+[multi:vars]
 become=yes
 deploy_target=pi
 become_method=sudo

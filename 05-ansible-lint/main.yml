@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: Get System Update
+    command: uptime
+    changed_when: false
+    register: system_uptime
+
+  - name: Print the registered output of the 'uptime command'
+    debug:
+      var: system_uptime.stdout
+  - name: Print a message if a command resulted in a change
+    debug:
+      msg: "Command Resulted in a Change"
+    when: system_uptime is changed

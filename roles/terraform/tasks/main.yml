@@ -1,0 +1,17 @@
+---
+# tasks file for terraform
+- name: EC2 Deployment using Terraform as a Service
+  terraform:
+    project_path: "/Users/Scott/myDev/Terraform/"
+    state: present
+
+- name: Define the backend
+  terraform:
+    project_path: '/Users/Scott/myDev/Terraform/'
+    state: present
+    force_init: true
+    backend_config:
+      region: "us-east-1"
+      ami: "ami-068663a3c619dd892"
+      instance_type: "t2.micro"
+      key: "terraform.tfstate"

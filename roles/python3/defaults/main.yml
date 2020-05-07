@@ -1,0 +1,5 @@
+---
+# defaults file for python3
+virtualenv_dir: cv
+virtualenv_python: python3.8
+app_dir: myDev
