@@ -1,0 +1,22 @@
+---
+# tasks file for tempcheck
+- name: Identify Pi
+  debug: var=ansible_facts
+
+- name: Set IP Information
+  set_fact:
+      myPiIP: "{{ ansible_facts['eth0']['ipv4']['address']}}"
+      myPiName: "{{ ansible_facts['nodename'] }}"
+
+- name: Register Device Temperature for each Device
+  register: system_temp
+  command: 'vcgencmd measure_temp'
+
+- name: Print a message if a Temperature Changed
+  debug:
+    msg: "{{ ansible_facts['nodename'] }}  {{ system_temp.stdout }}"
+
+- name: Read Temperatures
+  shell:
+      cmd: python3 readTemp.py
+  when: "myPiIP == '192.168.1.59'"
