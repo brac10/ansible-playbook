@@ -15,7 +15,7 @@
   shell:
       cmd: >
         ssh 192.168.1.59 python3
-        rangerPi.py 'Kube\0.\Blue.' 'ro'
+        rangerPi.py 'Pod \0.\Blue.' 'ro'
   when: "myPiIP == '192.168.1.50'"
 
 - name: "{{ Ansible_Project }} "
@@ -26,7 +26,7 @@
   shell:
       cmd: >
         ssh 192.168.1.59 python3
-        rangerPi.py 'Kube\1.\Orange' 'en-uk'
+        rangerPi.py 'Pod\1.\Orange' 'en-uk'
   when: "myPiIP == '192.168.1.51'"
 
 - name: "{{ Ansible_Project }} "
@@ -37,7 +37,7 @@
   shell:
       cmd: >
         ssh 192.168.1.59 python3
-        rangerPi.py 'Kube\2.\Red,\present' 'en'
+        rangerPi.py 'Pod\2.\Red,\present' 'en'
   when: "myPiIP == '192.168.1.52'"
 
 - name: "{{ Ansible_Project }} "
@@ -48,7 +48,7 @@
   shell:
       cmd: >
         ssh 192.168.1.59 python3
-        rangerPi.py 'Kube\three\Green,\Here' 'de'
+        rangerPi.py 'Pod\three\Green,\Here' 'de'
   when: "myPiIP == '192.168.1.53'"
 
 - name: "{{ Ansible_Project }} "
@@ -59,7 +59,7 @@
   shell:
       cmd: >
         ssh 192.168.1.59 python3
-        rangerPi.py 'Kube\4,\Purple.\Yo' 'en-nz'
+        rangerPi.py 'Pod\4,\Purple.\Yo' 'en-nz'
   when: "myPiIP == '192.168.1.54'"
 
 - name: "{{ Ansible_Project }} "
@@ -69,7 +69,7 @@
 - name: "{{ Ansible_Project }} "
   shell: >
       cmd: ssh 192.168.1.59 python3
-        rangerPi.py 'Kube\five\White\Here.' 'pl'
+        rangerPi.py 'Pod\five\White\Here.' 'pl'
   when: "myPiIP == '192.168.1.55'"
 
 
@@ -82,7 +82,7 @@
       cmd: >
         ssh 192.168.1.59
         python3 rangerPi.py
-        'Kube\six\Baby\Blue.Here.' 'fr'
+        'Pod\six\Baby\Blue.Here.' 'fr'
   when: "myPiIP == '192.168.1.56'"
 
 - name: "{{ Ansible_Project }}"
@@ -93,7 +93,7 @@
   shell:
       cmd: >
         ssh 192.168.1.59 python3 rangerPi.py
-        'cube\ Seven\Peechie\Here.\I\think\its\ a\color'
+        'Pod\ Seven\Peechie\Here.\I\think\its\ a\color'
         'es-es'
   when: "myPiIP == '192.168.1.57'"
 
@@ -105,7 +105,7 @@
   shell:
       cmd: >
        ssh 192.168.1.59 python3
-          rangerPi.py 'cube\eight.\Light\Green,\here' 'cs'
+          rangerPi.py 'Pod\eight.\Light\Green,\here' 'cs'
   when: "myPiIP == '192.168.1.58'"
 
 - name: "{{ Ansible_Project }} "
@@ -114,5 +114,5 @@
 
 - name: "{{ Ansible_Project }} | {{ myPiName }}"
   shell:
-      cmd: python3 rangerPi.py 'Kube\nine,\Gold\here' 'it'
+      cmd: python3 rangerPi.py 'Pod\nine,\Gold\here' 'it'
   when: "myPiIP == '192.168.1.59'"

@@ -23,23 +23,30 @@
           - should_fail_via_assert !=true
           - should_fail_via_complex_assert !=true
 
-    - name: Register the output of the uptime command
-      command: uptime
-      register: system_uptime
-    - name: Print the registered output of the 'uptime command'
-      debug:
-        var: system_uptime.stdout
-    - name: Print a message if a command resulted in a change
-      debug:
-        msg: "Command Resulted in a Change"
-      when: system_uptime is changed
+    # - name: Register Device Temperature for each Device
+    #   register: system_temp
+    #   command: 'vcgencmd measure_temp'
+
+    # - name: Register the output of the uptime command
+    #   command: uptime
+    #   register: system_uptime
+
+    # - name: Print the registered output of the System Temperture
+    #   debug:
+    #     var: system_temp.stdout
+    #   when: system_temp is changed
+
+    # - name: Print a message if a Temperature Changed
+    #   debug:
+    #     msg: "{{ ansible_facts['nodename'] }}  {{ system_temp.stdout }}"
 
 - hosts: launched
   connection: ssh
-  gather_facts: no
+  gather_facts: yes
   become: true
 
   roles:
+  - tempcheck
 # - tactical
 # - python3
 # - apache
