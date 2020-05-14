@@ -1,0 +1,24 @@
+---
+# tasks file for conky
+- name: Install Conky Tool
+  apt:
+    name: conky
+    state: present
+
+- name: Grab the configuration file
+  get_url:
+    url: https://raw.githubusercontent.com/novaspirit/rpi_conky/master/rpi3_conkyrc
+    dest: /home/pi/.conkyrc
+
+- name: Copy Desktop Config
+  copy:
+    src: files/conky.desktop
+    dest: /etc/xdg/autostart/
+    owner: pi
+- name: Copy Startup Script
+  copy:
+    src: files/conky.sh
+    dest: /usr/bin/
+    owner: pi
+- name: Reboot Server
+  command: sudo reboot
