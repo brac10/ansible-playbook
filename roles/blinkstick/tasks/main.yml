@@ -1,0 +1,11 @@
+---
+# tasks file for blinkstick
+- name: Install Blinkstick
+  pip:
+    name: blinkstick
+    state: present
+- name: Add rule for sudo Exception
+  shell: "sudo blinkstick --add-udev-rule"
+
+- name: Reboot afterwards
+  shell: "sudo reboot"

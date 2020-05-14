@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: k8smaster
   gather_facts: no
   connection: local
 
@@ -40,14 +40,17 @@
     #   debug:
     #     msg: "{{ ansible_facts['nodename'] }}  {{ system_temp.stdout }}"
 
-- hosts: launched
+- hosts: k8smaster
   connection: ssh
   gather_facts: yes
   become: true
 
   roles:
-  - tempcheck
+# - tempcheck
 # - tactical
+  - vcode
+# - blinkstick
+# - conky
 # - python3
 # - apache
 # - defcon
