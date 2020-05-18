@@ -40,7 +40,7 @@
     #   debug:
     #     msg: "{{ ansible_facts['nodename'] }}  {{ system_temp.stdout }}"
 
-- hosts: k8smaster
+- hosts: launched
   connection: ssh
   gather_facts: yes
   become: true
@@ -48,8 +48,8 @@
   roles:
 # - tempcheck
 # - tactical
-  - vcode
-# - blinkstick
+# - vcode
+  - blinkstick
 # - conky
 # - python3
 # - apache
