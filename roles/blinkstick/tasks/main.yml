@@ -1,11 +1,22 @@
 ---
 # tasks file for blinkstick
-- name: Install Blinkstick
-  pip:
-    name: blinkstick
-    state: present
-- name: Add rule for sudo Exception
-  shell: "sudo blinkstick --add-udev-rule"
+# - name: Install Blinkstick
+#   pip:
+#     name: blinkstick
+#     state: present
 
-- name: Reboot afterwards
-  shell: "sudo reboot"
+# - name: Add rule for sudo Exception
+#   shell: "sudo blinkstick --add-udev-rule"
+
+# - name: Download Blink.py from GitUp Repo
+#   git:
+#     repo: https://github.com/brac10/blink.git
+#     dest: /home/pi/myDev/blink
+#     force: yes
+
+- name: Internet Check
+  command: python blink.py
+  args:
+    chdir: /home/pi/myDev/blink/
+# - name: Reboot afterwards
+#   shell: "sudo reboot"
