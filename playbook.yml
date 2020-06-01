@@ -46,14 +46,15 @@
   become: true
 
   roles:
+# - pi-os
 # - tempcheck
 # - tactical
 # - vcode
-  - blinkstick
+# - blinkstick
 # - conky
 # - python3
 # - apache
 # - defcon
 # - pi-rollcall
 # - tactical
-# - chaos
+  - chaos
