@@ -1,0 +1,42 @@
+---
+# tasks file for pi-os
+- name: "Run Apt-Get Update"
+  become: true
+  apt:
+    state: latest
+
+- name: "Run sudo autoremove Prior to Installation"
+  become: true
+  apt:
+    autoremove: true
+
+- name: "Run full Upgrade"
+  become: true
+  apt:
+    upgrade: dist
+
+- name: "Install New Products Magnifier"
+  become: true
+  apt:
+    name: mage
+    state: present
+
+- name: "Install RP Bookshelf"
+  register: task_result
+  become: true
+  apt:
+    name: rp-bookshelf
+    state: present
+
+- name: Reboot immediately if there was a change.
+  shell: "sleep 5 && reboot"
+  async: 1
+  poll: 0
+
+
+- name: Wait for the reboot to complete if there was a change.
+  wait_for_connection:
+    connect_timeout: 20
+    sleep: 5
+    delay: 5
+    timeout: 300
