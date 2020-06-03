@@ -28,14 +28,14 @@ k8s-master   ansible_host=192.168.1.59
 [k8smaster]
 192.168.1.217
 
-[encounter]
-192.168.1.251
-192.168.1.208
+[vm]
 192.168.1.209
+192.168.1.210
 
-[encounter:vars]
+[vm:vars]
 ansible_user=scott
 ansible_password=tara10
+ansible_sudo_pass=tara10
 ansible_connection=ssh
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 

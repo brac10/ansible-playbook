@@ -1,0 +1,31 @@
+---
+# tasks file for virtualbox
+- name: Installation of Virtualbox using APT
+  apt:
+    name: virtualbox
+    state: present
+- name: Install curl on server
+  apt:
+    name: curl
+    state: present
+
+- name: Installation of Kubectl
+  shell: >
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+- name: "Make the kubectl binary executable."
+  shell: >
+    chmod +x ./kubectl
+
+- name: "Move kubectl to executable location"
+  become_method: sudo
+  shell: >
+    mv ./kubectl /usr/local/bin/kubectl
+
+- name: "Check Version and Validate Kubectl functionality"
+  register: kube_version
+  shell: >
+    kubectl version --client
+
+- debug:
+    msg: "{{ kube_version.stdout }}"

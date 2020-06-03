@@ -1,5 +1,5 @@
 ---
-- hosts: k8smaster
+- hosts: vm
   gather_facts: no
   connection: local
 
@@ -40,7 +40,7 @@
     #   debug:
     #     msg: "{{ ansible_facts['nodename'] }}  {{ system_temp.stdout }}"
 
-- hosts: launched
+- hosts: vm
   connection: ssh
   gather_facts: yes
   become: true
@@ -57,4 +57,5 @@
 # - defcon
 # - pi-rollcall
 # - tactical
-  - chaos
+# - chaos
+  - virtualbox
