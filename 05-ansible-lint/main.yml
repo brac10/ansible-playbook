@@ -2,8 +2,6 @@
 - hosts: localhost
   gather_facts: no
   connection: local
-  -  SK - K9Fzm8Y6dznW+j9NMtOGlsDTG83k2quf9UjF/jK9
-  -  AK - AKIATPN5V73GH7XYFEHI  tasks:
   - name: Get System Update
     command: uptime
     changed_when: false
