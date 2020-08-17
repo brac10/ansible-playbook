@@ -23,11 +23,11 @@
   when: "myPiIP == '192.168.1.59'"
 
 - name: "Set Voice"
-  shell: blinkstick --morph BLACK
+  shell: blinkstick --morph BLUE
   when: "myPiIP == '192.168.1.58'"
 
 - name: "Set Voice"
-  shell: blinkstick --morph RED
+  shell: blinkstick --morph BLUE
   when: "myPiIP == '192.168.1.59'"
 
 - name: "{{ Ansible_Project }} | OMG"
@@ -38,5 +38,5 @@
   when: "myPiIP == '192.168.1.59'"
 
 - name: "Set Voice"
-  shell: blinkstick --morph BLACK
+  shell: blinkstick --morph BLUE
   when: "myPiIP == '192.168.1.59'"

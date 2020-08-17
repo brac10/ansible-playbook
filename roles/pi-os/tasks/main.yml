@@ -1,6 +1,6 @@
 ---
 # tasks file for pi-os
-- name: "Run Apt-Get Update"
+- name: "Run apt-Get Update"
   become: true
   apt:
     state: latest

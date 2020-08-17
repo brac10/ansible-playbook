@@ -8,10 +8,10 @@
       myPiName: "{{ ansible_facts['nodename'] }}"
 
 - name: "{{ Ansible_Project }} | RED"
-  shell: blinkstick --index 0 RED
+  shell: blinkstick --index 0 BLUE
 
 - name: "{{ Ansible_Project }} | RED"
-  shell: blinkstick --index 1 RED
+  shell: blinkstick --index 1 BLUE
 
 - name: "Announcement"
   shell: >
@@ -26,8 +26,7 @@
 
 - name: "Displaying Kubernetes Cluster POD"
   shell: >
-      cmd: python3 rangerPi.py
-      'Start Servers for Ansible Tower and Jenkins' 'en-us'
+      cmd: python3 rangerPi.py 'Starting Servers for Ansible and Jenkins' 'en-us'
       chdir: myDev/gTTs
   when: "myPiIP == '192.168.1.59'"
 

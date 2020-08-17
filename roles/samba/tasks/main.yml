@@ -1,0 +1,45 @@
+---
+# tasks file for samba
+- name: Check for Updated Distros
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install Samba Required Components
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - samba
+    - samba-common
+    - python-glade2
+  when: ansible_os_family == "Debian"
+
+- name: Create Check Shared Directory
+  stat:
+    path: /home/pi/myDev
+  register: mySamba
+
+- name: "Echo if directory exists"
+  debug:
+    msg: "the Samba Directory has been created"
+  when: mySamba.stat.exists
+
+- name: "Create if Needed"
+  file:
+   path: /home/pi/myDev
+   state: directory
+   mode: 0755
+   group: pi
+   owner: pi
+  when: mySamba.stat.exists == false
+
+- name: Copy SMB Configurtion file
+  copy:
+    src: files/smb.conf
+    dest: /etc/samba/smb.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+
+- name: Ensure Samba is Running and set to start on Boot
+  service: "name={{ samba_daemon }} state=started enabled=yes"

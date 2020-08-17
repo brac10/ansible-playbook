@@ -1,0 +1,6 @@
+---
+# handlers file for samba
+- name: restart smb
+  service:
+    name: "{{ samba_daemon }}"
+    state: restarted
