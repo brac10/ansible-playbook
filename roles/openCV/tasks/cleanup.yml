@@ -1,0 +1,29 @@
+---
+# tasks file for openCV
+- name: Remove old software from Raspberry Pi
+  apt:
+    name: "wolfram-engine"
+    state: absent
+  sudo: yes
+
+- name: Remove Libre Office*
+  apt:
+    name: "libreoffice*"
+    state: absent
+  sudo: yes
+
+- name: Clean
+  apt:
+    state: removed
+
+- name: Autoremove
+  command: "apt-get autoremove"
+  become_method: sudo
+
+- name: Get Ready for Dependencies and Upgrade
+  command: "apt-get update"
+  become_method: sudo
+
+- name: Get Ready by Upgrade
+  command: "apt-get upgrade"
+  become_method: sudo

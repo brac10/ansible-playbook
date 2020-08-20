@@ -41,7 +41,9 @@
     #   debug:
     #     msg: "{{ ansible_facts['nodename'] }}  {{ system_temp.stdout }}"
   roles:
-  - samba #- conky
+  - openCV
+# - samba
+#- conky
 #  - python3
 #  - vcode
 # - pi-os

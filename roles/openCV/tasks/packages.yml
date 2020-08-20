@@ -1,0 +1,85 @@
+---
+- name: Add I/O Tools and CMAKE
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - build-essential
+    - cmake
+    - pkg-config
+- name: Image Readers
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - libjpeg-dev
+    - libtiff5-dev
+    - libjasper-dev
+    - libpng-dev
+
+- name: Video Streams
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - libavcodec-dev
+    - libavformat-dev
+    - libswscale-dev
+    - libv4l-dev
+    - libxvidcore-dev
+    - libx264-dev
+
+- name: Installation of GTK
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - libfontconfig1-dev
+    - libcairo2-dev
+    - libgdk-pixbuf2.0-dev
+    - libpango1.0-dev
+    - libgtk2.0-dev
+    - libgtk-3-dev
+
+- name: Installation of Fortran and HDF5 Data Sets
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - libatlas-base-dev
+    - gfortran
+    - libhdf5-dev
+    - libhdf5-serial-dev
+    - libhdf5-103
+    - libqtgui4
+    - libqtwebkit4
+    - libqt4-test
+    - python3-pyqt5
+
+- name: Installation of Python3
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - python3-dev
+
+- name: Download Pip Information
+  get_url:
+    url: https://bootstrap.pypa.io/get-pip.py
+    mode: 755
+
+- name: Install Git Pip
+  command: "python get-pip.py"
+  become_method: sudo
+
+- name: Install Git Pip3
+  command: "python3 get-pip.py"
+  become_method: sudo
+
+- name: Remove Python Cache
+  command: "rm -rf ~/.cache/pip"
+  become_method: sudo
+
+- name: Install Virtual Environment Wrapper
+  command: "pip install virtualenv virtualenvwrapper"
+  become_method: sudo

@@ -1,2 +1,6 @@
 ---
-# tasks file for openCV
+#- name: Name Remove Old Applications
+#  include_tasks: cleanup.yml
+
+- name: Add Developer Tools
+  include_tasks: packages.yml
