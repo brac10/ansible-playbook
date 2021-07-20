@@ -1,14 +1,2 @@
 ---
-# tasks file for k8s-master
-- name: "Install Updates"
-  apt:
-    name: "*"
-    state: latest
-
-- name: "Install Distribution Upgrades"
-  apt:
-    upgrade: dist
-
-- name: "Install Distribution Upgrades"
-  apt:
-    update_cache: yes
+- include: BlinkStickMasters.yml

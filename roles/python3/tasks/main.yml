@@ -39,11 +39,6 @@
     name: python3-pip
     state: present
 
-- name: Install base packages nginx
-  apt:
-    name: nginx
-    state: present
-
 - name: Install base packages python-apt
   apt:
     name: python-apt
@@ -69,7 +64,6 @@
     name: python3-pip
     state: present
 
-
 - name: Check the version of python 3.x exists
   stat:
     path: /usr/local/bin/python3.8
@@ -80,40 +74,4 @@
   apt:
     update_cache: yes
   tags: python
-  when:
-    python_result.stat.exists == False
-
-- name: Upgrade Pip for Virtual Environments
-  shell: "pip install virtualenv virtualenvwrapper"
-  become_method: sudo
-
-# - name: Update Bashrc with Pathing
-#   shell: "echo -e \n# virtualenv and virtualenvwrapper >> ~/.bashrc"
-#   become_user: "{{ ansible_user }}"
-
-# - name: Update Bashrc with Working Home
-#   shell: "echo export WORKON_HOME=$HOME/.virtualenvs >> ~/.bashrc"
-#   become_user: "{{ ansible_user }}"
-
-# - name: Update Bashrc with Pathing
-#   shell: "echo export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3 >> ~/.bashrc"
-#   become_user: "{{ ansible_user }}"
-
-# - name: Update wrapper
-#   shell: "echo source /usr/local/bin/virtualenvwrapper.sh >> ~/.bashrc"
-#   become_user: "{{ ansible_user }}"
-
-
-# - name: Initiate a virtualenvironment for Python
-#   pip:
-#     virtualenv="{{ virtualenv_dir }}"
-#     virtualenv_python="{{ virtualenv_python }}"
-#     requirements= "{{app_dir}}/requirements.txt"
-
-- name: Install base packages for Ansible Boto, Boto3, BotoCore, pywinrm, awscli
-  pip:
-    name: botocore, pywinrm, boto3, botocore, boto, awscli, numpy
-
-- name: Install docker, and helm, docker-compose
-  pip:
-    name: docker, helm, docker-compose
+  when: python_result.stat.exists == False

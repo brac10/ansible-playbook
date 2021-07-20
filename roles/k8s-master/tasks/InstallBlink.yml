@@ -1,0 +1,12 @@
+---
+- name: Install BlinkStick
+  command: "sudo pip install blinkstick"
+
+- name: Install Dos2Unix
+  command: "sudo apt-get install dos2unix"
+
+- name: DOS2Unix
+  command: "sudo dos2unix /usr/local/bin/blinkstick"
+
+- name: BlinkStick Rules
+  command: "sudo blinkstick --add-udev-rule"

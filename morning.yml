@@ -1,8 +1,9 @@
 ---
-- hosts: defcon
-  connection: ssh
+- hosts: onepi
   gather_facts: yes
+  connection: ssh
   become: true
+  become_method: sudo
 
   roles:
-     - morning
+    - python3

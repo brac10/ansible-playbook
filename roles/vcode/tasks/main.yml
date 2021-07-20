@@ -1,10 +1,11 @@
 ---
 # tasks file for vcode
-- name: Grab the configuration file
-  get_url:
-    url: https://code.headmelted.com/installers/apt.sh
-    dest: /home/pi/apt.sh
-
-- name: Run the command
-  command:
-    cmd: sh ./apt.sh
+- name: Install Visual Code
+  apt:
+    name: code
+    state: present
+# tasks file for vcode
+- name: Install Go Lang
+  apt:
+    name: golang
+    state: present

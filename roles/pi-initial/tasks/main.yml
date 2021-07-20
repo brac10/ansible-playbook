@@ -4,14 +4,14 @@
 
 - name: Set IP Information
   set_fact:
-      myPiIP: "{{ ansible_facts['eth0']['ipv4']['address']}}"
-      myPiName: "{{ ansible_facts['nodename'] }}"
+    myPiIP: "{{ ansible_facts['wlan0']['ipv4']['address']}}"
+    myPiName: "{{ ansible_facts['nodename'] }}"
 
 - name: "{{ Ansible_Project }} | Blue"
-  shell: blinkstick --index 0 GREEN
+  shell: blinkstick --index 0 BLUE
 
 - name: "{{ Ansible_Project }} | Blue"
-  shell: blinkstick --index 1 RED
+  shell: blinkstick --index 1 BLUE
 
 - name: "Server Information | {{ myPiIP }} | {{ myPiName }}"
   debug: msg="{{ myPiIP }}"

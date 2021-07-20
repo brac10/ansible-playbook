@@ -1,0 +1,16 @@
+---
+# tasks file for sshRole
+- name: Create .SSH if it doesnt exist
+  file:
+    path: "home/pi/.ssh"
+    state: directory
+    owner: pi
+    mode: 0775
+
+- name: Set authorized key for Raspberry Pi
+  copy:
+    src: "files/id_rangerpi.pub"
+    dest: "home/pi/.ssh/id_rangerpi.pub"
+    remote_src: no
+    owner: pi
+    mode: 0644

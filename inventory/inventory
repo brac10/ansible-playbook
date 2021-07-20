@@ -1,71 +1,175 @@
 [localhost]
 127.0.0.1
 
-[rangerPi]
-192.168.1.60
-
-[rangerPi:vars]
+[localhost:vars]
 become=yes
 deploy_target=pi
 become_method=sudo
 ansible_user=pi
 ansible_password=Ranger1975#
 ansible_connection=ssh
+ansible_python_interpreter=/usr/bin/python3
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 
-[launched]
-k8s-worker-0 ansible-host=192.168.1.50
-k8s-worker-1 ansible_host=192.168.1.51
-k8s-worker-2 ansible_host=192.168.1.52
-k8s-worker-3 ansible_host=192.168.1.53
-k8s-worker-4 ansible_host=192.168.1.54
-k8s-worker-5 ansible_host=192.168.1.55
-k8s-worker-6 ansible_host=192.168.1.56
-k8s-worker-7 ansible_host=192.168.1.57
-k8s-worker-8 ansible_host=192.168.1.58
-k8s-master   ansible_host=192.168.1.59
 
-[k8servers]
-192.168.1.50
-192.168.1.51
-192.168.1.52
-192.168.1.53
-192.168.1.54
-192.168.1.55
-192.168.1.56
-192.168.1.57
-192.168.1.58
-192.168.1.59
+[onepi]
+192.168.1.101 ansible_host=192.168.1.101
 
-[k8smaster]
-192.168.1.217
-
-[defcon]
-192.168.1.59
-
-[launched:vars]
+[k8s-masters:vars]
 become=yes
 deploy_target=pi
 become_method=sudo
 ansible_user=pi
 ansible_password=Ranger1975#
 ansible_connection=ssh
+ansible_python_interpreter=/usr/bin/python3
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 
-[k8servers:vars]
+[k8s-worker:vars]
 become=yes
 deploy_target=pi
 become_method=sudo
 ansible_user=pi
 ansible_password=Ranger1975#
 ansible_connection=ssh
+ansible_python_interpreter=/usr/bin/python3
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
+[k8s-masters]
+rpi-kube-master-1 ansible_host=192.168.1.101 kubernetes_role=master
+rpi-kube-master-2 ansible_host=192.168.1.102 kubernetes_role=master
+rpi-kube-master-3 ansible_host=192.168.1.103 kubernetes_role=master
+rpi-kube-master-vip ansible_host=192.168.1.100 kubernetes_role=master
+
+[k8s-worker]
+rpi-kube-worker-1 ansible_host=192.168.1.111 kubernetes_role=node
+rpi-kube-worker-2 ansible_host=192.168.1.112 kubernetes_role=node
+rpi-kube-worker-3 ansible_host=192.168.1.113 kubernetes_role=node
+rpi-kube-worker-4 ansible_host=192.168.1.114 kubernetes_role=node
+rpi-kube-worker-5 ansible_host=192.168.1.115 kubernetes_role=node
+rpi-kube-worker-6 ansible_host=192.168.1.116 kubernetes_role=node
+rpi-kube-worker-7 ansible_host=192.168.1.117 kubernetes_role=node
+rpi-kube-worker-8 ansible_host=192.168.1.118 kubernetes_role=node
+rpi-kube-worker-9 ansible_host=192.168.1.119 kubernetes_role=node
+rpi-kube-worker-10 ansible_host=192.168.1.120 kubernetes_role=node
+rpi-kube-worker-11 ansible_host=192.168.1.121 kubernetes_role=node
+rpi-kube-worker-12 ansible_host=192.168.1.122 kubernetes_role=node
+
+[k8s]
+192.168.1.100 ansible_host=192.168.1.100
+192.168.1.101 ansible_host=192.168.1.101
+192.168.1.102 ansible_host=192.168.1.102
+192.168.1.103 ansible_host=192.168.1.103
+192.168.1.111 ansible_host=192.168.1.111
+192.168.1.112 ansible_host=192.168.1.112
+192.168.1.113 ansible_host=192.168.1.113
+192.168.1.114 ansible_host=192.168.1.114
+192.168.1.115 ansible_host=192.168.1.115
+192.168.1.116 ansible_host=192.168.1.116
+192.168.1.117 ansible_host=192.168.1.117
+192.168.1.118 ansible_host=192.168.1.118
+192.168.1.119 ansible_host=192.168.1.119
+192.168.1.120 ansible_host=192.168.1.120
+192.168.1.121 ansible_host=192.168.1.121
+192.168.1.122 ansible_host=192.168.1.122
+
+[k8s:vars]
+become=yes
+deploy_target=pi
+become_method=sudo
+ansible_user=pi
+ansible_password=Ranger1975#
+ansible_connection=ssh
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
+[k8host:vars]
+become=yes
+deploy_target=pi
+become_method=sudo
+ansible_user=pi
+ansible_password=Ranger1975#
+ansible_python_interpreter=/usr/bin/python3
+ansible_connection=ssh
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
+[k8host]
+192.168.1.100
+192.168.1.101
+192.168.1.102
+192.168.1.103
+
+[k8host:vars]
+become=yes
+deploy_target=pi
+become_method=sudo
+ansible_user=pi
+ansible_password=Ranger1975#
+ansible_python_interpreter=/usr/bin/python3
+ansible_connection=ssh
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
+[k8master]
+192.168.1.100
+192.168.1.101
+192.168.1.102
+192.168.1.103
+
+[k8master:vars]
+become=yes
+deploy_target=pi
+become_method=sudo
+ansible_user=pi
+ansible_password=Ranger1975#
+ansible_python_interpreter=/usr/bin/python3
+ansible_connection=ssh
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
+[cluster1]
+192.168.1.111 ansible_host=192.168.1.111
+192.168.1.112 ansible_host=192.168.1.112
+192.168.1.113 ansible_host=192.168.1.113
+192.168.1.114 ansible_host=192.168.1.114
+
+[cluster2]
+192.168.1.115 ansible_host=192.168.1.115
+192.168.1.116 ansible_host=192.168.1.116
+192.168.1.117 ansible_host=192.168.1.117
+192.168.1.118 ansible_host=192.168.1.118
+
+[cluster3]
+192.168.1.119 ansible_host=192.168.1.119
+192.168.1.120 ansible_host=192.168.1.120
+192.168.1.121 ansible_host=192.168.1.121
+192.168.1.122 ansible_host=192.168.1.122
+
+[cluster1:vars]
+[cluster2:vars]
+[cluster3:vars]
+become=yes
+deploy_target=pi
+become_method=sudo
+ansible_user=pi
+ansible_password=Ranger1975#
+ansible_python_interpreter=/usr/bin/python3
+ansible_connection=ssh
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
+
+[kube:vars]
+become=yes
+deploy_target=pi
+become_method=sudo
+ansible_user=pi
+ansible_password=Ranger1975#
+ansible_python_interpreter=/usr/bin/python3
+ansible_connection=ssh
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
 
 # Ubuntu Servers
 [Ubuntu]
-192.168.1.251
-192.168.1.208
-192.168.1.209
+192.168.1.210
 
 [Ubuntu:vars]
 become=yes
@@ -80,18 +184,10 @@ ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 192.168.1.251
 
 [localhost:vars]
-ansible_user=scott
-ansible_sudo_pass=tara10
-ansible_password=tara10
-
-[k8smaster:vars]
-become=yes
-deploy_target=pi
-become_method=sudo
 ansible_user=pi
+ansible_sudo_pass=Ranger1975#
 ansible_password=Ranger1975#
-ansible_connection=ssh
-ansible_ssh_common_args="-o StrictHostKeyChecking=no"
+
 
 [defcon:vars]
 become=yes
@@ -99,15 +195,13 @@ deploy_target=pi
 become_method=sudo
 ansible_user=pi
 ansible_password=Ranger1975#
+ansible_python_interpreter=/usr/bin/python3
 ansible_connection=ssh
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"
 
 [multi:children]
-Ubuntu
-defcon
-launched
+kubeservers
 localhost
-k8smaster
 
 [multi:vars]
 become=yes
@@ -115,5 +209,6 @@ deploy_target=pi
 become_method=sudo
 ansible_user=pi
 ansible_password=Ranger1975#
+ansible_python_interpreter=/usr/bin/python3
 ansible_connection=ssh
 ansible_ssh_common_args="-o StrictHostKeyChecking=no"

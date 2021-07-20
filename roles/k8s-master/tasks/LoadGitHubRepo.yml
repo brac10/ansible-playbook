@@ -1,0 +1,6 @@
+- name: Load Master Template into Raspberry Pi from Github
+  git:
+    repo: "https://github.com/brac10/raspbernetes.git"
+    dest: /home/pi/raspbernetes
+    clone: yes
+    refspec: "+refs/pull/*:refs/heads/*"

@@ -1,22 +1,28 @@
 ---
-# tasks file for blinkstick
-# - name: Install Blinkstick
-#   pip:
-#     name: blinkstick
-#     state: present
-
-# - name: Add rule for sudo Exception
-#   shell: "sudo blinkstick --add-udev-rule"
-
-# - name: Download Blink.py from GitUp Repo
-#   git:
-#     repo: https://github.com/brac10/blink.git
-#     dest: /home/pi/myDev/blink
-#     force: yes
-
-- name: Internet Check
-  command: python blink.py
-  args:
-    chdir: /home/pi/myDev/blink/
-# - name: Reboot afterwards
-#   shell: "sudo reboot"
+# # tasks file for blinkstick
+# # - name: Reboot
+# #   command: sudo reboot
+# - name: Run a BlinkStick Command red
+#   command: "blinkstick --index 0 purple"
+# - name: Run a BlinkStick Command red
+#   command: "blinkstick --index 1 purple"
+# - name: Run a BlinkStick Command red
+#   command: "blinkstick --index 2 purple"
+# - name: Run a BlinkStick Command red
+#   command: "blinkstick --index 3 purple"
+# - name: Morph to blue
+#   command: "blinkstick --morph --set-color=blue --duration=99"
+# - name: Morph to blue
+#   command: "blinkstick --morph --set-color=white --duration=99"
+# - name: Morph to blue
+#   command: "blinkstick --morph --set-color=green"
+# - name: Create Directory for myDev
+#   command: mkdir myDev
+# Variable setup.
+- name: Install Blink
+  apt: >
+    pkg="{{ item }}"
+    state=present
+  with_items:
+    - Blinkstick
+  sudo: yes

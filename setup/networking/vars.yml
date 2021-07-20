@@ -1,0 +1,57 @@
+---
+# Mapping of what hardware MAC addresses should be configured with specific IPs.
+mac_address_mapping:
+  "e4:5f:01:09:dd:eb":
+    name: rpi-kube-master-vip.dramble.com
+    ip: "192.168.1.100"
+  "b8:27:eb:6b:02:d8":
+    name: rpi-kube-master-1.dramble.com
+    ip: "192.168.1.101"
+  "e4:5f:01:0a:cb:87":
+    name: rpi-kube-master-2.dramble.com
+    ip: "192.168.1.102"
+  "e4:5f:01:10:f6:93":
+    name: rpi-kube-master-3.dramble.com
+    ip: "192.168.1.103"
+  "b8:27:eb:68:cc:2f":
+    name: rpi-kube-worker-1.dramble.com
+    ip: "192.168.1.111"
+  "b8:27:eb:c3:5d:9d":
+    name: rpi-kube-worker-2.dramble.com
+    ip: "192.168.1.112"
+  "dc:a6:32:68:16:3c":
+    name: rpi-kube-worker-3.dramble.com
+    ip: "192.168.1.113"
+  "dc:a6:32:b9:56:c1":
+    name: rpi-kube-worker-4.dramble.com
+    ip: "192.168.1.114"
+  "b8:27:eb:ed:31:0c":
+    name: rpi-kube-worker-5.dramble.com
+    ip: "192.168.1.115"
+  "dc:a6:32:07:c4:46":
+    name: rpi-kube-worker-6.dramble.com
+    ip: "192.168.1.116"
+  "b8:27:eb:51:5a:2d":
+    name: rpi-kube-worker-7.dramble.com
+    ip: "192.168.1.117"
+  "dc:a6:32:09:59:78":
+    name: rpi-kube-worker-8.dramble.com
+    ip: "192.168.1.118"
+  "e4:5f:01:10:f6:7b":
+    name: rpi-kube-worker-9.dramble.com
+    ip: "192.168.1.119"
+  "e4:5f:01:10:f6:c8":
+    name: rpi-kube-worker-10.dramble.com
+    ip: "192.168.1.120"
+  "e4:5f:01:10:f7:1d":
+    name: rpi-kube-worker-11.dramble.com
+    ip: "192.168.1.121"
+  "e4:5f:01:09:18:ea":
+    name: rpi-kube-worker-12.dramble.comß
+    ip: "192.168.1.122"
+
+# Nameservers to use in resolv.conf.
+dns_nameservers:
+  - "192.168.1.169"
+  - "8.8.8.8"
+  - "8.8.4.4"

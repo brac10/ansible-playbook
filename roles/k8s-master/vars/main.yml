@@ -1,2 +1,4 @@
 ---
 # vars file for k8s-master
+primcolor: "BLUE"
+altcolor: "GREEN"

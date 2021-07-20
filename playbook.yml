@@ -1,5 +1,5 @@
 ---
-- hosts: rangerPi
+- hosts: kubes
   gather_facts: yes
   connection: local
   become: true
@@ -7,7 +7,7 @@
   #vars:
   #  should_fail_via_fail: false
   #  should_fail_via_assert: false
-  #  should_fail_via_complex_assert: false
+  #  should_fail_a_complex_assert: false
 
   #tasks:
   #  - name: Fail if the conditions warrant a failure
@@ -24,34 +24,36 @@
   #        - should_fail_via_assert !=true
   #        - should_fail_via_complex_assert !=true
 
-    # - name: Register Device Temperature for each Device
-    #   register: system_temp
-    #   command: 'vcgencmd measure_temp'
+  # - name: Register Device Temperature for each Device
+  #   register: system_temp
+  #   command: 'vcgencmd measure_temp'
 
-    # - name: Register the output of the uptime command
-    #   command: uptime
-    #   register: system_uptime
+  # - name: Register the output of the uptime command
+  #   command: uptime
+  #   register: system_uptime
 
-    # - name: Print the registered output of the System Temperture
-    #   debug:
-    #     var: system_temp.stdout
-    #   when: system_temp is changed
+  # - name: Print the registered output of the System Temperture
+  #   debug:
+  #     var: system_temp.stdout
+  #   when: system_temp is changed
 
-    # - name: Print a message if a Temperature Changed
-    #   debug:
-    #     msg: "{{ ansible_facts['nodename'] }}  {{ system_temp.stdout }}"
+  # - name: Print a message if a Temperature Changed
+  #   debug:
+  #     msg: "{{ ansible_facts['nodename'] }}  {{ system_temp.stdout }}"
   roles:
-  - openCV
-# - samba
-#- conky
-#  - python3
-#  - vcode
-# - pi-os
-#  - tempcheck
-#  - tactical
-# - vcode
-#  - blinkstick
-# - conky
+    #- tactical
+    #- samba
+    #- conky
+    #- python3
+    #- vcode
+    #- pi-os
+    #- tempcheck
+    #- tactical
+    #- vcode
+    #- cleanup
+    #- blinkstick
+    - conky
+    #- sshRole
 # - python3
 # - apache
 #  - defcon

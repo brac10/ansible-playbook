@@ -1,0 +1,2 @@
+- name: "Morph to {{ primcolor }}"
+  command: blinkstick --morph --set-color={{ primcolor }}

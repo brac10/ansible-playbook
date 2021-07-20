@@ -1,0 +1,27 @@
+[dramble]
+192.168.1.100 ansible_host=192.168.1.100
+192.168.1.101 ansible_host=192.168.1.101
+192.168.1.102 ansible_host=192.168.1.102
+192.168.1.103 ansible_host=192.168.1.103
+192.168.1.111 ansible_host=192.168.1.111
+192.168.1.112 ansible_host=192.168.1.112
+192.168.1.113 ansible_host=192.168.1.113
+192.168.1.114 ansible_host=192.168.1.114
+192.168.1.115 ansible_host=192.168.1.115
+192.168.1.116 ansible_host=192.168.1.116
+192.168.1.117 ansible_host=192.168.1.117
+192.168.1.118 ansible_host=192.168.1.118
+192.168.1.119 ansible_host=192.168.1.119
+192.168.1.120 ansible_host=192.168.1.120
+192.168.1.121 ansible_host=192.168.1.121
+192.168.1.122 ansible_host=192.168.1.122
+
+[dramble:vars]
+ansible_ssh_user=pi
+deploy_target=pi
+become_method=sudo
+ansible_user=pi
+ansible_password=Ranger1975#
+ansible_connection=ssh
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_common_args="-o StrictHostKeyChecking=no"
